@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>s0nichu_ // internet personal</title>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&family=Zen+Antique+Soft&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:#060406; --bg2:#0c080c; --panel:#100c10; --border:#1e161e;
+  --orange:#c45a00; --orange2:#ff7a00;
+  --purple:#4a1a6a; --purple2:#8833cc;
+  --bone:#c8bfae; --dim:#554455; --darker:#2a1a2a;
+  --glow-o:rgba(196,90,0,0.3); --glow-p:rgba(136,51,204,0.2);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--bone);font-family:'Share Tech Mono',monospace;font-size:13px;min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;z-index:1000;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");}
+body::after{content:'';position:fixed;inset:0;z-index:998;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 1px,rgba(0,0,0,.07) 1px,rgba(0,0,0,.07) 2px);}
+
+@keyframes glitch1{0%,90%,100%{clip-path:none;transform:none;opacity:0;}91%{clip-path:polygon(0 20%,100% 20%,100% 35%,0 35%);transform:translateX(-4px);opacity:.8;color:#ff4400;}94%{clip-path:polygon(0 60%,100% 60%,100% 75%,0 75%);transform:translateX(3px);opacity:.8;}97%{clip-path:none;opacity:0;}}
+@keyframes glitch2{0%,85%,100%{clip-path:none;transform:none;opacity:0;}86%{clip-path:polygon(0 50%,100% 50%,100% 65%,0 65%);transform:translateX(4px);opacity:.6;color:#cc00ff;}89%{clip-path:none;opacity:0;}}
+@keyframes flicker{0%,92%,100%{opacity:1;}93%{opacity:.5;}95%{opacity:1;}97%{opacity:.3;}99%{opacity:1;}}
+@keyframes marquee{from{transform:translateX(100vw);}to{transform:translateX(-100%);}}
+@keyframes eqAnim{to{transform:scaleY(0.2);}}
+@keyframes blink{50%{opacity:.3;}}
+@keyframes rgbShift{0%{text-shadow:-2px 0 #ff4400,2px 0 #cc00ff;}50%{text-shadow:2px 0 #ff4400,-2px 0 #cc00ff;}100%{text-shadow:-2px 0 #ff4400,2px 0 #cc00ff;}}
+
+/* HEADER */
+#site-header{background:#040204;border-bottom:2px solid var(--orange);box-shadow:0 0 40px var(--glow-o),0 0 80px var(--glow-p);overflow:hidden;}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;border-bottom:1px solid #1a0a00;}
+.site-title{font-family:'VT323',monospace;font-size:2.8rem;color:var(--orange2);letter-spacing:.1em;text-shadow:0 0 20px var(--orange),0 0 50px var(--glow-o);animation:flicker 7s infinite;position:relative;}
+.site-title::before,.site-title::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;}
+.site-title::before{animation:glitch1 6s infinite;}
+.site-title::after{animation:glitch2 6s infinite;}
+.header-sub{font-size:.6rem;color:var(--dim);letter-spacing:.18em;text-transform:uppercase;}
+.header-nav{display:flex;gap:0;list-style:none;}
+.header-nav li a{display:block;padding:4px 12px;font-size:.67rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);text-decoration:none;border-left:1px solid #1a0a00;transition:color .15s,background .15s;}
+.header-nav li a:hover{color:var(--orange2);background:rgba(196,90,0,.1);}
+.marquee-bar{background:linear-gradient(90deg,#0f0500,#150a20,#0f0500);padding:4px 0;overflow:hidden;white-space:nowrap;border-top:1px solid #1a0a00;}
+.marquee-inner{display:inline-block;animation:marquee 30s linear infinite;font-size:.6rem;letter-spacing:.15em;color:#774433;}
+
+/* LAYOUT */
+#wrap{max-width:970px;margin:14px auto;padding:0 10px;display:grid;grid-template-columns:215px 1fr;gap:12px;align-items:start;}
+
+/* PANELS */
+.box{background:var(--panel);border:1px solid var(--border);margin-bottom:10px;box-shadow:inset 0 0 30px rgba(0,0,0,.7);position:relative;overflow:hidden;}
+.box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--orange),transparent);opacity:.4;}
+.box-title{background:linear-gradient(90deg,#1a0800,#100510);border-bottom:1px solid #2a1000;padding:4px 10px;font-size:.67rem;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:6px;}
+.box-title::before{content:'//';opacity:.5;font-size:.6rem;}
+.box-body{padding:10px;}
+
+/* SIDEBAR */
+#sidebar{position:sticky;top:10px;}
+#profile{background:var(--panel);border:1px solid var(--border);padding:14px 10px;text-align:center;margin-bottom:10px;position:relative;overflow:hidden;}
+#profile::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center top,rgba(196,90,0,.06) 0%,transparent 70%);}
+.username{font-family:'VT323',monospace;font-size:2rem;color:var(--orange2);letter-spacing:.06em;text-shadow:0 0 14px var(--orange);animation:rgbShift 4s ease-in-out infinite;margin-bottom:8px;}
+.avatar{width:100px;height:100px;margin:0 auto 10px;border:2px solid var(--orange);background:#1a0800;position:relative;overflow:hidden;box-shadow:0 0 20px var(--glow-o),0 0 40px var(--glow-p);}
+.avatar img{width:100%;height:100%;object-fit:cover;filter:saturate(1.2) contrast(1.1);}
+.avatar-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:var(--orange);opacity:.3;}
+.avatar::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.15) 3px,rgba(0,0,0,.15) 4px);}
+.profile-jp{font-family:'Zen Antique Soft',serif;font-size:.75rem;color:#554433;letter-spacing:.1em;margin-bottom:6px;}
+.profile-info{font-size:.63rem;color:var(--dim);line-height:1.8;margin-bottom:8px;}
+.profile-info b{color:var(--bone);}
+.mood{font-size:.6rem;color:var(--orange);border-top:1px solid #1a0a00;padding-top:7px;margin-top:4px;animation:blink 3s step-start infinite;}
+.side-links{list-style:none;}
+.side-links li{border-bottom:1px solid #160a10;}
+.side-links li a{display:block;padding:6px 12px;font-size:.67rem;color:var(--dim);text-decoration:none;letter-spacing:.06em;transition:color .15s,padding-left .15s,background .15s;}
+.side-links li a:hover{color:var(--orange2);padding-left:18px;background:rgba(196,90,0,.05);}
+.side-links li a::before{content:'> ';color:var(--orange);opacity:.5;}
+
+/* PLAYER */
+#player{background:#080408;border:1px solid #1a0820;margin-bottom:10px;box-shadow:0 0 20px var(--glow-p);}
+.player-screen{background:#040204;border:1px solid #150a20;margin:8px;padding:8px;font-family:'VT323',monospace;}
+.player-track{font-size:1rem;color:var(--purple2);text-shadow:0 0 10px var(--purple2);overflow:hidden;white-space:nowrap;border-bottom:1px solid #150a20;padding-bottom:4px;margin-bottom:4px;}
+.player-scroll{display:inline-block;animation:marquee 14s linear infinite;}
+.player-meta{font-size:.68rem;color:#442266;display:flex;justify-content:space-between;}
+.eq-bars{display:flex;align-items:flex-end;gap:2px;height:26px;padding:0 8px;margin-bottom:6px;}
+.eq-bar{flex:1;background:var(--purple2);box-shadow:0 0 4px var(--purple2);animation:eqAnim .35s ease-in-out infinite alternate;transform-origin:bottom;}
+.eq-bar:nth-child(1){height:45%;animation-delay:.00s;}
+.eq-bar:nth-child(2){height:90%;animation-delay:.06s;}
+.eq-bar:nth-child(3){height:60%;animation-delay:.12s;}
+.eq-bar:nth-child(4){height:100%;animation-delay:.04s;}
+.eq-bar:nth-child(5){height:75%;animation-delay:.17s;}
+.eq-bar:nth-child(6){height:50%;animation-delay:.09s;}
+.eq-bar:nth-child(7){height:85%;animation-delay:.02s;}
+.eq-bar:nth-child(8){height:65%;animation-delay:.14s;}
+.eq-bar:nth-child(9){height:35%;animation-delay:.08s;}
+.eq-bar:nth-child(10){height:80%;animation-delay:.11s;}
+.player-controls{display:flex;justify-content:center;gap:6px;padding:4px 8px 8px;}
+.ctrl-btn{font-family:'VT323',monospace;font-size:1.1rem;background:#100815;border:1px solid #2a1040;color:var(--purple2);padding:2px 8px;cursor:pointer;transition:background .15s,box-shadow .15s;}
+.ctrl-btn:hover{background:#1a0a28;box-shadow:0 0 10px var(--purple2);}
+.playlist{list-style:none;border-top:1px solid #150a20;}
+.playlist li{padding:4px 10px;font-size:.6rem;border-bottom:1px solid #0e0616;color:#442266;cursor:pointer;display:flex;justify-content:space-between;transition:color .1s,background .1s;}
+.playlist li:hover,.playlist li.active{color:var(--purple2);background:#0a0418;}
+.playlist li .dur{color:#2a1040;}
+.stat-row{display:flex;justify-content:space-between;font-size:.6rem;color:var(--dim);padding:6px 10px;border-bottom:1px solid #160a10;}
+.stat-row b{color:var(--orange2);}
+
+/* MAIN */
+#main{display:flex;flex-direction:column;gap:0;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:.67rem;line-height:1.9;}
+.about-col dt{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-top:6px;}
+.about-col dd{color:var(--bone);padding-left:6px;}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;}
+.tag{background:#140820;border:1px solid #2a1040;color:#8833cc;font-size:.58rem;padding:2px 8px;letter-spacing:.06em;cursor:default;transition:background .15s,color .15s;}
+.tag:hover{background:#1a0a30;color:var(--purple2);}
+.tag.o{background:#140800;border-color:#2a1000;color:var(--orange);}
+.tag.o:hover{background:#1e0f00;color:var(--orange2);}
+
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;}
+.gallery-item{position:relative;aspect-ratio:1;background:#0d080d;border:1px solid #1a101a;overflow:hidden;cursor:pointer;transition:border-color .2s;}
+.gallery-item:hover{border-color:var(--orange);}
+.gallery-item img{width:100%;height:100%;object-fit:cover;filter:saturate(1.3) contrast(1.1);transition:filter .3s,transform .3s;}
+.gallery-item:hover img{filter:saturate(1.6) contrast(1.2);transform:scale(1.04);}
+.gallery-item .cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.88));padding:14px 6px 5px;font-size:.56rem;color:#ccc;opacity:0;transition:opacity .2s;}
+.gallery-item:hover .cap{opacity:1;}
+.gallery-item::after{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.1) 2px,rgba(0,0,0,.1) 3px);}
+.gallery-ph{aspect-ratio:1;background:#0d080d;border:1px dashed #1e1020;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;font-size:.56rem;color:#2a1a2a;cursor:pointer;transition:border-color .2s,color .2s;}
+.gallery-ph:hover{border-color:var(--purple);color:var(--purple2);}
+.gallery-ph .ico{font-size:1.4rem;opacity:.4;}
+
+/* YT */
+.yt-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.yt-item{display:flex;gap:10px;align-items:flex-start;padding:8px;background:#0a060a;border:1px solid #1a101a;text-decoration:none;color:var(--bone);transition:border-color .15s,background .15s;}
+.yt-item:hover{border-color:var(--orange);background:#120a06;}
+.yt-thumb{width:80px;flex-shrink:0;aspect-ratio:16/9;background:#0a0408;border:1px solid #1a0820;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.yt-thumb img{width:100%;height:100%;object-fit:cover;filter:saturate(1.2) grayscale(20%);}
+.yt-thumb .play{position:absolute;font-size:1.4rem;color:var(--orange2);text-shadow:0 0 10px var(--orange);}
+.yt-info{flex:1;}
+.yt-name{font-size:.76rem;color:#ff9955;letter-spacing:.03em;margin-bottom:3px;}
+.yt-desc{font-size:.6rem;color:var(--dim);line-height:1.6;}
+.yt-link{font-size:.56rem;color:var(--orange);margin-top:4px;}
+
+/* POSTS */
+.post{background:var(--panel);border:1px solid var(--border);margin-bottom:10px;}
+.post-head{background:linear-gradient(90deg,#140800,#0d0514);border-bottom:1px solid #2a1000;padding:5px 12px;display:flex;justify-content:space-between;align-items:center;}
+.post-title{font-size:.78rem;color:#ff9955;letter-spacing:.05em;}
+.post-meta{font-size:.56rem;color:var(--dim);}
+.post-body{padding:12px;font-size:.68rem;line-height:1.95;color:var(--bone);}
+.post-foot{border-top:1px solid #1a0a10;padding:5px 12px;font-size:.56rem;color:var(--dim);display:flex;gap:12px;}
+.post-foot a{color:var(--orange);text-decoration:none;}
+.post-foot a:hover{color:var(--orange2);}
+
+/* LIGHTBOX */
+#lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:9999;align-items:center;justify-content:center;cursor:pointer;}
+#lightbox.open{display:flex;}
+#lightbox img{max-width:90vw;max-height:90vh;border:2px solid var(--orange);box-shadow:0 0 50px var(--glow-o),0 0 30px var(--glow-p);}
+#lb-close{position:absolute;top:16px;right:22px;font-family:'VT323',monospace;font-size:2rem;color:var(--orange2);cursor:pointer;}
+
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:#060406;}
+::-webkit-scrollbar-thumb{background:#2a1040;}
+::-webkit-scrollbar-thumb:hover{background:var(--purple2);}
+#footer{text-align:center;padding:16px;font-size:.55rem;color:#221422;letter-spacing:.14em;border-top:1px solid #110811;margin-top:8px;}
+#footer span{color:#3a1a00;}
+hr.div{border:none;border-top:1px solid #1a0a10;margin:8px 0;}
+</style>
+</head>
+<body>
+
+<div id="lightbox" onclick="closeLB()">
+  <div id="lb-close">✕</div>
+  <img id="lb-img" src="" alt=""/>
+</div>
+
+<header id="site-header">
+  <div class="header-top">
+    <div>
+      <div class="site-title" data-text="s0nichu_">s0nichu_</div>
+      <div class="header-sub">¥$ · colina, chile · internet personal</div>
+    </div>
+    <nav><ul class="header-nav">
+      <li><a href="#about">sobre mí</a></li>
+      <li><a href="#gallery">fotos</a></li>
+      <li><a href="#videos">videos</a></li>
+      <li><a href="#blog">blog</a></li>
+    </ul></nav>
+  </div>
+  <div class="marquee-bar"><span class="marquee-inner">
+    ✦ s0nichu_ ✦ yo soy la venganza y me vengo en la cara de todos ✦ nightcore ✦ plastic tree ✦ 4chan ✦ lolcows ✦ internet profundo ✦ videojuegos ✦ colina ✦ ¥$ ✦ 剥がれてく 溶けない名前 ✦ cry of fear ✦ fnaf ✦
+  </span></div>
+</header>
+
+<div id="wrap">
+
+<aside id="sidebar">
+
+  <div id="profile">
+    <div class="username">s0nichu_</div>
+    <div class="avatar">
+      <!-- <img src="foto.jpg" alt="yo"> -->
+      <div class="avatar-ph">⬡</div>
+    </div>
+    <div class="profile-jp">剥がれてく 溶けない名前</div>
+    <div class="profile-info">
+      <b>¥$</b> · colina, chile<br>
+      él · internet addict<br>
+      "me obsesiona..."
+    </div>
+    <div class="mood">▌estado: online · bored</div>
+  </div>
+
+  <div class="box">
+    <div class="box-title">navegación</div>
+    <ul class="side-links">
+      <li><a href="#about">sobre mí</a></li>
+      <li><a href="#gallery">galería</a></li>
+      <li><a href="#videos">videos youtube</a></li>
+      <li><a href="#blog">blog / thoughts</a></li>
+      <li><a href="https://github.com" target="_blank">github</a></li>
+      <li><a href="https://instagram.com/s0nichu_" target="_blank">instagram</a></li>
+    </ul>
+  </div>
+
+  <div id="player">
+    <div class="box-title" style="background:linear-gradient(90deg,#0a0418,#060210);border-color:#2a1040;color:var(--purple2);">
+      // reproductor
+    </div>
+    <div class="player-screen">
+      <div class="player-track">
+        <span class="player-scroll" id="now-playing">Wisp · See You Soon</span>
+      </div>
+      <div class="player-meta"><span>320 KBPS</span><span id="timer">0:00</span></div>
+    </div>
+    <div class="eq-bars">
+      <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+      <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+      <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+    </div>
+    <div class="player-controls">
+      <button class="ctrl-btn" onclick="prevTrack()">|◄</button>
+      <button class="ctrl-btn" onclick="togglePlay()" id="play-btn">►</button>
+      <button class="ctrl-btn" onclick="nextTrack()">►|</button>
+      <button class="ctrl-btn" onclick="stopTrack()">■</button>
+    </div>
+    <ul class="playlist" id="playlist"></ul>
+  </div>
+
+  <div class="box">
+    <div class="box-title">stats</div>
+    <div class="stat-row"><span>visitas:</span><b id="vc">???</b></div>
+    <div class="stat-row"><span>posts:</span><b>3</b></div>
+    <div class="stat-row"><span>online:</span><b>1</b></div>
+    <div class="stat-row"><span>est.:</span><b>2024</b></div>
+  </div>
+
+</aside>
+
+<main id="main">
+
+  <section id="about">
+    <div class="box">
+      <div class="box-title">sobre mí // about</div>
+      <div class="box-body">
+        <div class="about-grid">
+          <dl class="about-col">
+            <dt>username</dt><dd>s0nichu_</dd>
+            <dt>ubicación</dt><dd>colina, chile</dd>
+            <dt>pronombres</dt><dd>él / he</dd>
+            <dt>edad</dt><dd>18</dd>
+          </dl>
+          <dl class="about-col">
+            <dt>música</dt><dd>nightcore, jrock, wisp</dd>
+            <dt>juego fav</dt><dd>cry of fear · fnaf</dd>
+            <dt>intereses</dt><dd>4chan · lolcows · internet</dd>
+            <dt>estado</dt><dd>siempre en construcción</dd>
+          </dl>
+        </div>
+        <hr class="div"/>
+        <div style="font-size:.67rem;line-height:1.95;color:var(--bone);">
+          soy de colina. paso demasiado tiempo en internet. me gusta el rock japonés,
+          el nightcore, buscar cosas raras online y los videojuegos.<br>
+          si llegaste acá: hola. si no: igual.<br>
+          <span style="color:var(--dim);">// no nos importa perder</span>
+        </div>
+        <div class="tags">
+          <span class="tag o">nightcore</span>
+          <span class="tag o">plastic tree</span>
+          <span class="tag o">おそロシア革命</span>
+          <span class="tag o">wisp</span>
+          <span class="tag">4chan</span>
+          <span class="tag">lolcows</span>
+          <span class="tag">internet profundo</span>
+          <span class="tag">fnaf</span>
+          <span class="tag">cry of fear</span>
+          <span class="tag o">colina</span>
+          <span class="tag">skate</span>
+          <span class="tag o">¥$</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="box">
+      <div class="box-title">galería // photos</div>
+      <div class="box-body">
+        <div style="font-size:.58rem;color:var(--dim);margin-bottom:8px;">click para ampliar · no capturas sin permiso</div>
+        <div class="gallery">
+          <div class="gallery-item" onclick="openLB(this)">
+            <div class="avatar-ph" style="font-size:1.6rem;background:#0d080d;">📷</div>
+            <div class="cap">con los amigos</div>
+          </div>
+          <div class="gallery-item" onclick="openLB(this)">
+            <div class="avatar-ph" style="font-size:1.6rem;background:#0d080d;">📷</div>
+            <div class="cap">máscaras de lobo 🐺</div>
+          </div>
+          <div class="gallery-item" onclick="openLB(this)">
+            <div class="avatar-ph" style="font-size:1.6rem;background:#0d080d;">📷</div>
+            <div class="cap">skate colina</div>
+          </div>
+          <div class="gallery-item" onclick="openLB(this)">
+            <div class="avatar-ph" style="font-size:1.6rem;background:#0d080d;">📷</div>
+            <div class="cap">random</div>
+          </div>
+          <div class="gallery-ph"><div class="ico">+</div><span>agregar foto</span></div>
+          <div class="gallery-ph"><div class="ico">+</div><span>agregar foto</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="videos">
+    <div class="box">
+      <div class="box-title">videos que me gustan // youtube</div>
+      <div class="box-body">
+        <ul class="yt-list">
+          <li>
+            <a class="yt-item" href="https://youtube.com" target="_blank">
+              <div class="yt-thumb"><span class="play">▶</span></div>
+              <div class="yt-info">
+                <div class="yt-name">Wisp · See You Soon</div>
+                <div class="yt-desc">lo pongo cuando no sé qué sentir. simplemente funciona.</div>
+                <div class="yt-link">// reemplaza con el link real</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="yt-item" href="https://youtube.com" target="_blank">
+              <div class="yt-thumb"><span class="play">▶</span></div>
+              <div class="yt-info">
+                <div class="yt-name">Plastic Tree · favorito</div>
+                <div class="yt-desc">jrock que no me canso de escuchar.</div>
+                <div class="yt-link">// reemplaza con el link real</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="yt-item" href="https://youtube.com" target="_blank">
+              <div class="yt-thumb"><span class="play">▶</span></div>
+              <div class="yt-info">
+                <div class="yt-name">おそロシア革命 · Less of Pain</div>
+                <div class="yt-desc">de las canciones que me obsesionan últimamente.</div>
+                <div class="yt-link">// reemplaza con el link real</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="yt-item" href="https://youtube.com" target="_blank">
+              <div class="yt-thumb"><span class="play">▶</span></div>
+              <div class="yt-info">
+                <div class="yt-name">video random · agregar aquí</div>
+                <div class="yt-desc">algo raro que encontraste. ponlo acá.</div>
+                <div class="yt-link">// reemplaza con el link real</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog">
+    <div class="post">
+      <div class="post-head">
+        <span class="post-title">yo soy la venganza</span>
+        <span class="post-meta">marzo 2025</span>
+      </div>
+      <div class="post-body">
+        esa foto con las máscaras de lobo sigue siendo una de las mejores cosas que hemos hecho.<br>
+        "yo soy la venganza y me vengo en la cara de todos" — sin más contexto.<br><br>
+        <span style="color:var(--dim);">// some things don't need explanation</span>
+      </div>
+      <div class="post-foot"><span>#fotos #amigos #wolf</span><a href="#">leer más</a></div>
+    </div>
+
+    <div class="post">
+      <div class="post-head">
+        <span class="post-title">canciones de este mes</span>
+        <span class="post-meta">abril 2025</span>
+      </div>
+      <div class="post-body">
+        en loop: Wisp · See You Soon, おそロシア革命 · Less of Pain, y nightcore random.<br>
+        también más Plastic Tree. el jrock tiene algo que no puedo explicar.
+      </div>
+      <div class="post-foot"><span>#música #nightcore #jrock #plasticTree</span><a href="#">leer más</a></div>
+    </div>
+
+    <div class="post">
+      <div class="post-head">
+        <span class="post-title">hola // bienvenid@</span>
+        <span class="post-meta">2024</span>
+      </div>
+      <div class="post-body">
+        este es mi espacio en internet. no sé bien qué voy a poner acá pero algo voy a poner.<br>
+        si llegaste hasta acá: hola. si no: igual.<br><br>
+        <span style="color:var(--dim);">// est. 2024 · colina · ¥$</span>
+      </div>
+      <div class="post-foot"><span>#intro #hola #internet</span><a href="#">leer más</a></div>
+    </div>
+  </section>
+
+</main>
+</div>
+
+<footer id="footer">
+  <span>✦</span> s0nichu_ · github pages · colina, chile · 剥がれてく 溶けない名前 <span>✦</span>
+</footer>
+
+<script>
+const tracks=[
+  {name:"Wisp · See You Soon",dur:"3:21"},
+  {name:"おそロシア革命 · Less of Pain",dur:"4:02"},
+  {name:"Plastic Tree · Kuuchuu Buranko",dur:"4:15"},
+  {name:"void, BABY BOI · WHAT U NEED",dur:"3:08"},
+  {name:"AgusFortnite2008 · Peter Griffin",dur:"2:44"},
+  {name:"nightcore · [canción favorita]",dur:"3:30"},
+];
+let cur=0,playing=false,elapsed=0,timerInt=null;
+function buildPL(){
+  document.getElementById('playlist').innerHTML=
+    tracks.map((t,i)=>`<li class="${i===0?'active':''}" onclick="selTrack(${i})"><span>${i+1}. ${t.name}</span><span class="dur">${t.dur}</span></li>`).join('');
+}
+function selTrack(i){
+  cur=i;elapsed=0;
+  document.querySelectorAll('.playlist li').forEach((el,j)=>el.classList.toggle('active',j===i));
+  document.getElementById('now-playing').textContent=tracks[i].name;
+  document.getElementById('timer').textContent='0:00';
+  if(playing)startTimer();
+}
+function togglePlay(){playing=!playing;document.getElementById('play-btn').textContent=playing?'■■':'►';playing?startTimer():clearInterval(timerInt);}
+function stopTrack(){playing=false;elapsed=0;clearInterval(timerInt);document.getElementById('play-btn').textContent='►';document.getElementById('timer').textContent='0:00';}
+function nextTrack(){selTrack((cur+1)%tracks.length);}
+function prevTrack(){selTrack((cur-1+tracks.length)%tracks.length);}
+function startTimer(){clearInterval(timerInt);timerInt=setInterval(()=>{elapsed++;const m=Math.floor(elapsed/60),s=elapsed%60;document.getElementById('timer').textContent=m+':'+(s<10?'0':'')+s;},1000);}
+buildPL();
+
+function openLB(el){const img=el.querySelector('img');if(!img)return;document.getElementById('lb-img').src=img.src;document.getElementById('lightbox').classList.add('open');}
+function closeLB(){document.getElementById('lightbox').classList.remove('open');}
+
+const v=parseInt(localStorage.getItem('s0nichu_v')||'0')+1;
+localStorage.setItem('s0nichu_v',v);
+document.getElementById('vc').textContent=v;
+</script>
+</body>
+</html>
